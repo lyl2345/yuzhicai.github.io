@@ -1,0 +1,260 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+/* body {  
+    justify-content: center;  
+    align-items: center;   
+    background: url(./img/美食7.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+     background-size: cover; 
+}   */
+.iconfont {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    /* left: 50%; */
+    z-index: 999;
+    font: 900 80px '';
+    color: #a18585;
+}
+
+#fanhui-btn {
+    top: 8%;
+    left: 5%;
+}
+#dabiao5{
+    width: 1000px;
+    height: 150px;
+    margin: 0 auto 0 auto;
+ }
+#xiaobiao5{
+    display: flex;
+    width: 1300px;
+    height: 200px;
+    margin: 170px auto 0 auto;
+ }
+#shao{
+    /* display: flex; */
+    width: 1400px;
+    height: 1600px;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 100px; */
+    /* margin-bottom: 80px; */
+    /* border: #555 2px solid; */
+    border-radius: 25px;
+    background-color:#e0cc84;
+}
+#wen{
+	width: 900px;
+	height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 0 auto;
+    /* font-family: 楷体; */
+    border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+    border-image-slice: 1;
+    border-width: 5px;
+    border-style: solid;
+    /* border-image-outset: 0.3cm; */
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 38px;
+    letter-spacing: 4px; 
+    color: #555;
+    padding: 10px;
+    /* border-image-outset: 0.5cm; */
+}
+.cetu{
+    width: 800px;
+    height: 600px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+    /* border: 3px solid #887e7e;  */
+    /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    background-color: rgba(250, 233, 178, 0.5); */
+    border-radius: 5%;
+}
+.shaocha2{
+    margin-left: 1100px;
+}
+#shao2{
+    /* display: flex; */
+    width: 1400px;
+    height: 1300px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 100px; */
+    /* margin-bottom: 80px; */
+    /* border: #555 2px solid; */
+    border-radius: 25px;
+    background-color:#e0cc84;
+}
+#wen2{
+	width: 900px;
+	height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 0 auto;
+    /* font-family: 楷体; */
+    border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+    border-image-slice: 1;
+    border-width: 5px;
+    border-style: solid;
+    /* border-image-outset: 0.3cm; */
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 38px;
+    letter-spacing: 4px; 
+    color: #555;
+    padding: 10px;
+    /* border-image-outset: 0.5cm; */
+}
+.cetu2{
+    width: 800px;
+    height: 600px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+    /* border: 3px solid #887e7e;  */
+    /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    background-color: rgba(250, 233, 178, 0.5); */
+    border-radius: 5%;
+}
+.shaocha22{
+    margin-left: 1100px;
+}
+span{
+    font-weight: 800;
+    color: #000;
+}
+.love {  
+    position: absolute; /* 绝对定位 */  
+    top: 150px; /* 距离顶部的距离 */  
+    left: 100px; /* 距离左侧的距离 */  
+    /* 其他样式，如宽度、高度等可以根据需要添加 */    
+}    
+
+/* 已有的.round和.love-heart样式保持不变 */  
+
+
+.love-heart:before,
+#switch {
+    display: none;
+}
+
+.love-heart,
+.love-heart::after {
+    border-color: #d1d4e5;
+    border: 1px solid;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    width: 10px;
+    height: 8px;
+    border-bottom: 0
+}
+
+.round {
+    position: absolute;
+    z-index: 1;
+    width: 8px;
+    height: 8px;
+    background: hsl(0deg 0% 100%);
+    box-shadow: rgb(0 0 0 / 24%) 0px 0px 4px 0px;
+    border-radius: 100%;
+    left: 0px;
+    bottom: -1px;
+    transition: all .5s ease;
+    animation: check-animation2 .5s forwards;
+}
+
+input:checked+label .round {
+    transform: translate(0px, 0px);
+    animation: check-animation .5s forwards;
+    background-color: hsl(0deg 0% 100%);
+}
+
+@keyframes check-animation {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    50% {
+        transform: translate(0px, 7px);
+    }
+
+    100% {
+        transform: translate(7px, 7px);
+    }
+}
+
+@keyframes check-animation2 {
+    0% {
+        transform: translate(7px, 7px);
+    }
+
+    50% {
+        transform: translate(0px, 7px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+.love-heart {
+    box-sizing: border-box;
+    position: relative;
+    transform: rotate(-45deg) translate(-50%, -33px) scale(4);
+    display: block;
+    border-color: #5B3C00;
+    cursor: pointer;
+    /* top: 0; */
+    margin: 0 auto 0 auto;
+}
+
+input:checked+.love-heart,
+input:checked+.love-heart::after,
+input:checked+.love-heart .bottom {
+    border-color: #000000;
+    box-shadow: inset 6px -5px 0px 2px #8b8b7f;
+}
+
+.love-heart::after,
+.love-heart .bottom {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-color: #5B3C00;
+}
+
+.love-heart::after {
+    right: -9px;
+    transform: rotate(90deg);
+    top: 7px;
+}
+
+.love-heart .bottom {
+    width: 11px;
+    height: 11px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #5B3C00;
+    left: -1px;
+    top: 5px;
+    border-radius: 0px 0px 0px 5px;
+}

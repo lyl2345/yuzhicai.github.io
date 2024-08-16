@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/5.css">
+    <link rel="stylesheet" href="css/er.css">
+    <link rel="stylesheet" href="css/san2.css">
+    <link rel="stylesheet" href="css/si2.css">
+    <link rel="stylesheet" href="css/wu.css">
+    <!-- <link rel="stylesheet" href="./ewai.css"> -->
+    <!-- <link rel="stylesheet" href="./css5/iconfont.css"> -->
+    <link rel="stylesheet" href="css/yigeyemian.css">
+</head>
+<style>
+
+    .fade-in {  
+  /* 初始状态透明度为0 */  
+  opacity: 0;  
+    
+  /* 应用动画 */  
+  animation: fadeInOut 5s infinite ease-in-out;  
+}  
+  
+/* 定义关键帧动画 */  
+@keyframes fadeInOut {  
+  0% {  
+    opacity: 0; /* 开始时透明度为0 */  
+  }  
+  50% {  
+    opacity: 1; /* 中间时透明度为1 */  
+  }  
+  100% {  
+    opacity: 0; /* 结束时透明度为0，开始下一轮循环 */  
+  }  
+}
+
+.econtainer {
+    width: 1400px;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;   
+    align-items: center;   
+    margin: 100px auto 100px auto;
+    border-radius: 25px;
+}
+
+.eitem {
+    width: 240px;
+    height: 160px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    box-shadow: 0 30px 50px #505050;
+    background-size: cover;
+    background-position: center;
+    transition: 1s;
+}
+
+.eitem:nth-child(1),
+.eitem:nth-child(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0);
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.eitem:nth-child(3) {
+    left: 70%;
+}
+
+.eitem:nth-child(4) {
+    left: calc(70% + 250px);
+}
+
+.eitem:nth-child(5) {
+    left: calc(70% + 500px);
+}
+
+.eitem:nth-child(n+6) {
+    left: calc(70% + 750px);
+    opacity: 0;
+}
+
+.ebuttons {
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    margin-left: -50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.ebuttons div {
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 25px;
+    transition: .5s;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+#f{
+    box-sizing: border-box;
+    height: 100vh;               /* 视口高度 */  
+    justify-content: center;     /* 水平居中 */  
+    align-items: center;         /* 垂直居中 */  
+    /* background-color: #ddbd52;  */
+}
+.diancontainer {
+    margin: 100px auto 0 auto;
+    width: 900px;
+    height: 320px;
+    background-color: #E0CC84;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 0 15px;
+}
+
+#hui {
+    width: 80%;
+    color: #fff;
+    font-size: 50px;
+    letter-spacing: 5px;
+}
+
+.input-box {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.input-box label {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    color: #fff;
+    letter-spacing: 5px;
+}
+
+.input-box label span {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    transition: 0.5s;
+}
+
+.input-box label span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    box-shadow: 0 -26px 0 #fff;
+    transition: 0.5s;
+}
+
+.input-box label span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 26px 0 0 #fff;
+    transition: 0.5s;
+}
+
+.input-box label input:checked~span.yes::before {
+    background-color: #0f0;
+    box-shadow: none;
+}
+
+.input-box label input:checked~span.yes::after {
+    background-color: #0f0;
+    box-shadow: none;
+    height: 55%;
+}
+
+.input-box label input:checked~span.yes {
+    transform: rotate(-45deg) translate(2px, -10px);
+}
+
+.input-box label input:checked~span.no::before {
+    background-color: #f00;
+    box-shadow: none;
+    transform: rotate(-45deg) translate(7px, -8px);
+}
+
+.input-box label input:checked~span.no::after {
+    background-color: #f00;
+    box-shadow: none;
+    transform: rotate(-45deg) translate(7px, 11px);
+}
+
+.input-box input {
+    display: none;
+}
+
+</style>
+<body>
+    <!-- <nav>
+        <a href="#a">“何方神圣”</a>
+        <a href="#b">“新宠儿”</a>
+        <a href="#c">营养宝库</a>
+        <a href="#d">快捷却藏“劫”</a>
+        <a href="#e">筑起“防火墙”</a>
+    </nav> -->
+    <nav class="navbar">  
+        <ul class="navbar-list">  
+            <li class="navbar-item active"><a href="#a">“何方神圣”</a></li>  
+            <li class="navbar-item"><a href="#b">“新宠儿”</a></li>  
+            <li class="navbar-item"><a href="#c">营养宝库</a></li>  
+            <li class="navbar-item"><a href="#d">快捷却藏“劫”</a></li>  
+            <li class="navbar-item"><a href="#e">筑起“防火墙”</a></li>  
+        </ul>  
+    </nav>  
+    <div class="yecontainer">
+        <div class="yeitem" id="a">
+            <div class="i">
+                <i class="iconfont icon-a-appround15" id="fanhui-btn" onclick="goToHomePage()"></i>
+            </div>
+        
+                <div id="dabiao1">
+                    <!-- <img src="./img/图片8.png" width="200" alt=""> -->
+                    <img src="./img/动态大标题/动态大标题/1.gif" width="1000" height="350" alt="">
+                    <!-- <img src="./img/图片8.png" width="200" alt=""> -->
+                </div>
+                <div class="container">
+                    <input type="radio" name="tabs" id="tab_top" checked>
+                    <input type="radio" name="tabs" id="tab_middle">
+                    <input type="radio" name="tabs" id="tab_bottom">
+                    <div class="cube">
+                        <div class="tab-content">
+                            <div id="dingyi">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_14f2a05d6edb4f2f2f329e91a3513a1f" width="450" height="280" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                            <p id="nihaoo">
+                                近日，#留学生 预制菜#相关话题屡上热搜。社交平台上，不少留学生热衷于分享自制预制菜的心得；或是晒出在国外选购预制菜的攻略……预制菜成为海外留学生的新宠。
+                                预制菜究竟是何方神圣呢？预制菜，也称预制菜肴，是食品工业化的产物，其特点在于将食材进行预先处理、加工和包装，供消费者或餐饮环节加工者简单加热或烹饪后食用。
+                                兼顾效率与口味的预制菜成为留学生就餐的新选择，也就不难理解了。
+                            </p>
+                        </div>
+                        <div class="tab-content">
+                            <!-- <div class="sui"> -->
+                                <div id="dong">
+                                    <iframe src="https://dycharts.com/xshow/index.html?id=c_d04f304d850abee26d25a044aed77888" width="410" height="340" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                                <p id="nihaoo">现在，市场上的预制菜种类繁多，包括各种蔬菜、水果、肉类、海鲜等等。
+                                    这些预制菜不仅可以直接食用，还可以作为烹饪的原材料，让人们在家中轻松制作美味佳肴。
+                                    此外，预制菜还可以根据个人口味和需求进行定制，满足不同人群的需求。
+                                </p>
+                            <!-- </div> -->
+                        </div>
+                        <div class="tab-content">
+                            <div class="dui">
+                                <img src="./img/中美对比.png" alt="">
+                            </div>
+                            <p id="nihaoo">
+                                与国外相比（以美国为例）我国预制菜普及程度占<span>10%~15%</span>，而美国已达到<span>60%</span>。就总体趋势而言，预制菜正在发展成消费大市场。
+                            </p>
+                        </div>
+            
+                    </div>
+                    <div class="labels">
+                        <label for="tab_top" class="tab">No.1</label>
+                        <label for="tab_middle" class="tab">No.2</label>
+                        <label for="tab_bottom" class="tab">No.3</label>
+                    </div>
+                </div>
+                
+            <!-- <div class="chatu">
+                <img src="./img/图片1.png"  alt="">
+            </div> -->
+        
+        
+                <div class="container1">
+                    <input type="radio" name="select" id="slide_1" checked hidden>
+                    <div class="slider">
+                        <label for="slide_1" class="slide slide-1"></label>
+                    </div>
+                    <div class="card card-1">
+                        <div class="img">
+                            <iframe src="https://dycharts.com/xshow/index.html?id=c_f67d3904f5b7924c0ac4da3713497238" width="400" height="320" frameborder="0" scrolling="no"></iframe>
+                            <!-- <img src="./img/预测.gif" width="500" height="294" alt=""> -->
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                从2019年开始，我国预制菜市场规模开始快速扩大；2022年，我国预制菜市场规模为4196亿元；预计到2026年，我国预制菜市场规模将达到万亿级别。
+                            </div>
+                        </div>
+                        <img src="./img/糖葫芦.png" width="200" width="200" alt="">
+                    </div>
+                </div>
+            
+                <!-- <div class="duibao">
+                    <div class="dui">
+                        <iframe src="https://dycharts.com/xshow/index.html?id=c_f67d3904f5b7924c0ac4da3713497238" width="600" height="480" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <p id="nihao1">
+                        从2019年开始，我国预制菜市场规模开始快速扩大；2022年，我国预制菜市场规模为4196亿元；预计到2026年，我国预制菜市场规模将达到万亿级别。
+                    </p>
+                </div> -->
+            
+                <div class="container2">
+                    <input type="radio" name="select" id="slide_1" checked hidden>
+                    <div class="slider">
+                        <label for="slide_1" class="slide slide-1"></label>
+                    </div>
+                    <div class="card2 card-1">
+                        <div class="img">
+                            <iframe src="https://dycharts.com/xshow/index.html?id=c_1d42e8ee68aa23f5a4e06d7ea135791a" width="900" height="650" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p id="p2" class="fade-in">预制菜省域分布主要集中在东部沿海地区，尤其是<span>广东、江苏和浙江</span>等省份。这些地区经济发达，消费能力强，对预制菜的需求旺盛。
+                                   预制菜的便捷性使其成为现代快节奏生活下的优选食品。
+                                   可以预见，随着生活节奏的加快，预制菜市场预计将持续扩大，特别是在经济发达且消费能力强的地区。
+                                </p>
+                                <img src="./img/菜01.png" width="250" width="250" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="sell">
+                    <div class="shell">
+                        <div class="shellcontent">
+                            <div class="shellitem">
+                                <img src="./img/蛋糕-01.png" width="300" height="250" alt="">
+                            </div>
+                            <div class="shellitem">
+                                <img src="./img/蛋糕糕点.png" width="300" height="250" alt="">
+                            </div>
+                            <div class="shellitem">
+                                <img src="./img/点心02.png" width="300" height="250" alt="">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+        
+        
+                <!-- <div class="bao">
+                    <div class="qi">
+                    <iframe src="https://dycharts.com/xshow/index.html?id=c_1d42e8ee68aa23f5a4e06d7ea135791a" width="600" height="430" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div id="qiyefenbu">
+                        <p>预制菜省域分布主要集中在东部沿海地区，尤其是广东、江苏和浙江等省份。这些地区经济发达，消费能力强，对预制菜的需求旺盛。
+                            预制菜的便捷性使其成为现代快节奏生活下的优选食品。
+                            可以预见，随着生活节奏的加快，预制菜市场预计将持续扩大，特别是在经济发达且消费能力强的地区。
+                        </p>
+                    </div>
+                </div> -->
+            
+                <div class="container3">
+                    <input type="radio" name="select" id="slide_1" checked hidden>
+                    <div class="slider">
+                        <label for="slide_1" class="slide slide-1"></label>
+                    </div>
+                    <div class="card3 card-1">
+                        <!-- <img class="cardcha" src="./img/图片4.png" width="250" width="250" alt=""> -->
+                        <img class="cardcha" src="./img/汉堡包.png" width="250" height="250" alt="">
+                        <div class="card3img">
+                            <div class="img">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_bfc0842224a879970512ce35b55fae30" width="450" height="375" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                            <div class="img">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_eee4d593b31b7e291f065d8e8da8fc54" width="450" height="375" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>
+                                    今年三月，《2024胡润中国预制菜生产企业百强榜暨大单品冠军榜》发布，<span>安井食品位列榜单第一，百胜中国、绝味食品、双汇、味知香成为TOP5企业</span>。
+                                    以安井公司为例，预制菜市场规模和发展可以从其主营产品的营业收入占比中窥见一二。
+                                    安井公司的预制菜业务涵盖了<span>肉制品、鱼糜制品、面米制品、菜肴制品</span>等多个领域，显示出预制菜市场的广泛性和多样性。
+                                    安井公司作为预制菜巨头，其肉制品和鱼糜制品占比均达<span>32.38%</span>，显示预制菜市场的巨大潜力。
+                                    随着消费者对便捷、健康食品需求的增长，预制菜市场规模将持续扩大。
+                                    安井公司凭借在预制菜领域的显著优势，有望继续领跑市场。其成功在于不断满足消费者对方便、快捷食品的需求。
+                                </p>
+                                <img class="card3pcha" src="./img/煎饼02.png" width="200" width="200" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            
+                <!-- <div class="anbao">
+                    <div id="anjingg">
+                        <div class="an1">
+                            <iframe src="https://dycharts.com/xshow/index.html?id=c_bfc0842224a879970512ce35b55fae30" width="400" height="340" frameborder="0" scrolling="no"></iframe>       
+                        </div>
+                        <div class="an2">
+                            <iframe src="https://dycharts.com/xshow/index.html?id=c_eee4d593b31b7e291f065d8e8da8fc54" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                    <p id="ann">今年三月，《2024胡润中国预制菜生产企业百强榜暨大单品冠军榜》发布，安井食品位列榜单第一，百胜中国、绝味食品、双汇、味知香成为TOP5企业。
+                        以安井公司为例，预制菜市场规模和发展可以从其主营产品的营业收入占比中窥见一二。
+                        安井公司的预制菜业务涵盖了肉制品、鱼糜制品、面米制品、菜肴制品等多个领域，显示出预制菜市场的广泛性和多样性。
+                        安井公司作为预制菜巨头，其肉制品和鱼糜制品占比均达32.38%，显示预制菜市场的巨大潜力。
+                        随着消费者对便捷、健康食品需求的增长，预制菜市场规模将持续扩大。
+                        安井公司凭借在预制菜领域的显著优势，有望继续领跑市场。其成功在于不断满足消费者对方便、快捷食品的需求。
+                    </p>
+                </div> -->
+            
+                <div class="container4">
+                    <input type="radio" name="select" id="slide_1" checked hidden>
+                    <div class="slider">
+                        <label for="slide_1" class="slide slide-1"></label>
+                    </div>
+                    <div class="card4 card-1">
+                        <div class="card4img">
+                            <div class="img">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_a6067cd34fd666925a8f76dbabd46346" width="450" height="375" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                            <img class="card4cha" src="./img/酒坛.png" width="250" width="250" alt="">
+                            <div class="img">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_dd1b1a64bfea924f9c8e3c470e6774a6" width="450" height="375" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>据艾媒数据中心数据显示，<span>食品行业从业人员</span>满意度较低，而<span>学校食堂工作人员</span>满意度较高。
+                                    <span>中学学生家长和小学学生家长</span>对预制菜也有较高的满意度。中小学生和大学生则呈现出不同的满意度趋势。
+                                    从整体来看，大家对于预制菜的接受程度普遍较高。
+                                </p>
+                                <p >去年，预制菜进校园事件引发热议，各社会群体对于预制菜进校园的隐忧多在健康方面：防腐剂危害健康，价格高增加经济负担，食材可能不新鲜或保质期过长，品牌和监管存疑，运输过程易污染等等。
+                                    教育部认为预制菜“不宜推广进校园”，原因是“预制菜尚无统一标准体系、认证体系、追溯体系等有效监管机制”，需强化质量控制、安全性和营养管理，确保学生饮食安全健康。年初，预制菜国家标准报送稿已经出炉，最快半年内便有结果，预制菜大产业的障碍逐渐扫除。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card4tu">
+                            <img src="./img/可乐饮料.png" width="250" width="250" alt="">
+                            <img src="./img/汤.png" width="250" width="250" alt="">
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- <div class="xuebao">
+                    <div id="xiaotu">
+                        <div id="x1">
+                            <iframe src="https://dycharts.com/xshow/index.html?id=c_a6067cd34fd666925a8f76dbabd46346" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                        <div id="x2">
+                            <iframe src="https://dycharts.com/xshow/index.html?id=c_dd1b1a64bfea924f9c8e3c470e6774a6" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                    <div id="xiaowen">
+                        <p>据艾媒数据中心数据显示，食品行业从业人员满意度较低，而学校食堂工作人员满意度较高。
+                            中学学生家长和小学学生家长对预制菜也有较高的满意度。中小学生和大学生则呈现出不同的满意度趋势。
+                            从整体来看，大家对于预制菜的接受程度普遍较高。
+                        </p>
+                        <p >去年，预制菜进校园事件引发热议，各社会群体对于预制菜进校园的隐忧多在健康方面：防腐剂危害健康，价格高增加经济负担，食材可能不新鲜或保质期过长，品牌和监管存疑，运输过程易污染等等。
+                            教育部认为预制菜“不宜推广进校园”，原因是“预制菜尚无统一标准体系、认证体系、追溯体系等有效监管机制”，需强化质量控制、安全性和营养管理，确保学生饮食安全健康。年初，预制菜国家标准报送稿已经出炉，最快半年内便有结果，预制菜大产业的障碍逐渐扫除。
+                        </p>
+                    </div>
+                </div> -->
+            
+                <div class="container5">
+                    <input type="radio" name="select" id="slide_1" checked hidden>
+                    <div class="slider">
+                        <label for="slide_1" class="slide slide-1"></label>
+                    </div>
+                    <div class="card5 card-1">
+                        <div class="img">
+                            <img src="./img/年夜排名.gif" width="750" height="450" alt="">
+                        </div>
+                        <div class="content5">
+                            <div class="card5tu">
+                                <img id="card5cha" src="./img/薯条.png" width="200" width="200" alt="">
+                            </div>
+                            <div class="text">
+                                <p class="fade-in">
+                                    近年来，年夜饭预制菜逐渐崭露头角，成为众多家庭欢度春节的新选择。根据2023年中国春节热门预制菜品top10的数据，我们可以看到猪肚鸡、酸菜鱼、狮子头等经典菜肴纷纷上榜，这些菜肴以其独特的口感和丰富的营养赢得消费者的青睐。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="container6">
+                    <input type="radio" name="select" id="slide_1" checked hidden>
+                    <div class="slider">
+                        <label for="slide_1" class="slide slide-1"></label>
+                    </div>
+                    <div class="card6 card-1">
+                        <!-- <div class="card6img"> -->
+                            <div class="img">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_344752e31f0857c4e739939505485b69" width="440" height="340" frameborder="0" scrolling="no"></iframe>
+                            <!-- </div> -->
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>像福建传统名菜“佛跳墙”，在人们印象中似乎只有餐厅里的高级大厨才能做出来。现在被做成预制菜后，人们在家就能复刻餐厅里的这道大餐。而这道用料新鲜、原本只有在南方才能尝到的特色春菜腌笃鲜，被做成预制菜后，无论你在哪里都能享受到这个好味道。</p>
+                                <p>从小吃到大餐，从日常便饭到聚会宴请，现在，预制菜几乎囊括了人们所需的全部菜品，满足各种美食需求。未来，随着人们生活水平的提高和对健康饮食的重视，预制菜市场有望持续增长，成为年夜饭餐桌上的新宠。</p>
+                                <img id="card6cha" src="./img/炸鸡.png" width="200" width="200" alt="">
+                            </div>
+                        </div>
+                        <!-- <div class="card6img"> -->
+                            <div class="img">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_2e1a9edfc123170b44a6a36828032075" width="450" height="375" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            
+                <!-- <div class="nianbao">
+                    <div class="nian">
+                        <div id="nianpai">
+                            <div class="niantu">
+                                <img src="./img/年夜饭排名.gif" width="500" alt="">
+                            </div>
+                            <p id="nianye">
+                                近年来，年夜饭预制菜逐渐崭露头角，成为众多家庭欢度春节的新选择。根据2023年中国春节热门预制菜品top10的数据，我们可以看到猪肚鸡、酸菜鱼、狮子头等经典菜肴纷纷上榜，这些菜肴以其独特的口感和丰富的营养赢得消费者的青睐。
+                            </p>
+                        </div>
+                        <div id="nianpai2">
+                            <div id="niankuang">
+                                <div class="niantu2">
+                                    <iframe src="https://dycharts.com/xshow/index.html?id=c_344752e31f0857c4e739939505485b69" width="400px" height="340" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                                <div class="niantu3">
+                                    <iframe src="https://dycharts.com/xshow/index.html?id=c_2e1a9edfc123170b44a6a36828032075" width="400px" height="340" frameborder="0" scrolling="no"></iframe>
+                                </div>
+                            </div>
+                            <div id="nianye2">
+                                <p>像福建传统名菜“佛跳墙”，在人们印象中似乎只有餐厅里的高级大厨才能做出来。现在被做成预制菜后，人们在家就能复刻餐厅里的这道大餐。而这道用料新鲜、原本只有在南方才能尝到的特色春菜腌笃鲜，被做成预制菜后，无论你在哪里都能享受到这个好味道。</p>
+                                <p>从小吃到大餐，从日常便饭到聚会宴请，现在，预制菜几乎囊括了人们所需的全部菜品，满足各种美食需求。未来，随着人们生活水平的提高和对健康饮食的重视，预制菜市场有望持续增长，成为年夜饭餐桌上的新宠。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="love">
+                    <input id="switch" type="checkbox">
+                    <label class="love-heart" for="switch">
+                      <i class="left"></i>
+                      <i class="right"></i>
+                      <i class="bottom"></i>
+                      <div class="round"></div>
+                    </label>
+                </div>
+        </div>
+        <div class="yeitem" id="b">
+            <div class="i">
+                <i class="iconfont icon-a-appround15" id="fanhui-btn" onclick="goToHomePage()"></i>
+            </div>
+            <div id="dabiao">
+                <img src="./img/动态大标题/动态大标题/2.gif" width="1000" alt="">
+            </div>
+            <div id="xiaobiao">
+                <img src="./img/横线小标题.jpg" width="700" alt="">
+                <img src="./img/小标题/小标题/瘦身.png" width="600" height="94" alt="">
+                <img src="./img/横线小标题.jpg" width="700"  alt="">
+            </div>
+                <div class="shen">
+                    <div class="shencha">
+                        <img class="shenchatu" src="./img/汤.png" width="250" width="250" alt="">
+                        <img class="shenchatu" src="./img/菜01.png" width="250" width="250" alt="">
+                    </div>
+                    <div class="shentu">
+                        <iframe src="https://dycharts.com/xshow/index.html?id=c_0cee1f3513ff68f0d7da277719d72b50" width="500px" height="420" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <p class="ming1">预制菜实现菜品标准化供应，利于餐饮企业降本增效。
+                        预制菜的出现虽然引发了许多人们不同的看法和争议，但也实实在在的为人们的生活带来了许多便利，逐渐成为餐桌上的新宠。
+                        对于餐厅来说，成本中占比较高的是<span>原料、房屋租赁和人力费用。</span>
+                        预制菜实现菜品标准化供应，有效减少餐饮店的食材成本、人工成本和后厨面积，帮助餐饮店提升利润率水平，同时有效缩短出菜时间，有助于提升出餐率与翻台率，提升餐厅经营效率，符合品牌化预制菜企业的规模化发展需求。
+                        预制菜的使用还减少了商家对食材和调味料的储备需求，从而避免了因食材过期而造成的损失。预制菜采用标准化生产工艺，食品质量相对稳定，口感和营养成分也得到了很好的控制。
+                    </p>
+                    <div class="shencha">
+                        <img class="shenchatu" src="./img/点心02.png" width="250" width="250" alt="">
+                        <img class="shenchatu" src="./img/可乐饮料.png" width="250" width="250" alt="">
+                    </div>
+                </div>
+                <div id="chucan">
+                    <img class="chucha" src="./img/啊啊.png" width="300" width="300" alt="">
+                    <div class="chu">
+                        <div id="shangtu">
+                            <div class="shentu2">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_936ea579fbd2899fe848a388e4f4d95a" width="400px" height="340" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                            <div class="shentu3">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_84547dc4f4391c6722b02e0b72180764" width="400px" height="340" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                        <div class="chucanwen">
+                            <p class="ming">以上，预制菜通过<span>降低食材成本、人工成本、运营耗损以及提高出餐速度和生产效率</span>等方式，为商家带来了显著的成本降低好处。
+                                随着中国餐饮连锁化地不断提升和外卖渗透率不断增大，餐饮行业对产品的品控、出餐速度、口味等需求亦随之增大，这也加速了连锁餐饮和外卖服务对预制菜的需求扩大。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <hr> -->
+                <div id="xiaobiao">
+                    <img src="./img/横线小标题.jpg" width="700" alt="">
+                    <img src="./img/小标题/小标题/冷藏.png" width="600" height="81" alt="">
+                    <img src="./img/横线小标题.jpg" width="700"  alt="">
+                </div>
+                    <div class="lengbao">
+                        <div id="lengtu">
+                            <div class="letu1">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_54b2555cfc58ccdc8a019e125c3441f7" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                            <div class="letu2">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_e2c02f6bd114cd1024992a8a77fb97dc" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+                        <div id="lengwen">
+                            <p>冷链物流提效升级，筑牢预制菜行业发展基石
+                                预制菜对食材保鲜程度要求较高，速冻技术的技术精进使预制菜的保鲜时长更久，冷链物流的提效增速扩大了短保类食品的配送范围，减少了生鲜产品的损耗率，保障了预制菜品的新鲜度，是预制菜行业迈向标准化、产业化的重要前提条件，保证了餐饮食材在运输、仓储环节的品质，满足了消费者对口感和体验的高品质要求。
+                                艾媒数据显示，2021年中国冷链物流市场规模达<span>5699亿元</span>，冷库总容量达<span>5224万吨</span>，2020年冷藏车保有量达<span>28万辆</span>，冷链物流及仓储体系稳步发展。
+                            </p>
+                            <div class="lengcha">
+                                <img src="./img/虾饺.png" width="250" width="250" alt="">
+                                <img src="./img/披萨 (1).png" width="250" width="250" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="containeryi">
+                        <div class="cardyi">
+                            <img src="./img/起山素材 (15).png" alt="">
+                            <div class="textyi">
+                                <p id="lengwen1">
+                                    三月，正是雷笋的采收季,
+                                </p>
+                                <p id="lengwen1">
+                                    笋农老盛正忙着将刚摘下的笋打包运走。一个月前，一家预制菜生产企业来到这里，与他们这些种笋的农民们达成了合作，大批量采购雷笋，用来制作冷藏预制菜腌笃鲜。
+                                    这让老盛他们这些种笋的农民成了直接受益者。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cardyi">
+                            <img src="./img/起山素材 (27).png" alt="">
+                            <div class="textyi">
+                                <p id="lengwen2">
+                                    近年来，绿色健康的生活理念深入人心，人们希望能吃到新鲜的食材，于是以时令蔬菜为原料的冷藏预制菜应运而生。笋农老盛他们种的笋，就是要制作成这种冷藏预制菜。
+                                    和可以保存好几个月的冷冻预制菜不同，冷藏预制菜的保质期只有几天，所以整个生产链条的每个环节都需要高效运转。这家收购笋的企业，会对预制菜的销售数据实时统计和分析，然后根据这些信息来下订单。这样不仅可以帮助农民合理规划采收时间和数量，附近的工厂也能提前调整好生产线，在24小时之内将新鲜的雷笋洗净、去皮、切块，加工成安全、卫生的预制菜原料。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cardyi">
+                            <img src="./img/起山素材 (28).png" alt="">
+                            <div class="textyi">
+                                <p id="lengwen3">
+                                    而得益于冷链技术的发展，处理后的新鲜雷笋可以跨越山海，快速运输到位于天津的中央厨房。在那里，来自浙江的雷笋和来自安徽的咸肉如期汇合。在生产线上严格按照配方和流程制成预制菜，再由冷链就近运输到附近的门店。 从农民挖笋到被做成预制菜摆上超市的货架，整个流程大约3天，上架的菜品可以保证新鲜、安全，有足够的保质期供消费者购买。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <!-- <hr> -->
+                <div class="she">
+                    <div id="xiaobiao">
+                        <img src="./img/横线小标题.jpg" width="700" alt="">
+                        <img src="./img/小标题/小标题/社会.png" width="600" height="105" alt="">
+                        <img src="./img/横线小标题.jpg" width="700"  alt="">
+                    </div>
+                    <div class="shebao">
+                        <div class="shee">
+                            <div id="swen">
+                                <p class="fade-in">
+                                    受一线年轻消费者青睐，方便快捷是主要购买原因。
+                                </p>
+                                <p class="fade-in">
+                                    预制菜的消费者群体中一二线城市消费群体居多，<span>一线城市占比超过50%</span>；消费者年龄分布：以中青年为主，21-40岁消费群体占比超过<span>80%</span>。
+                                </p>
+                            </div>
+                            <div class="ss1">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_b0a47e4657ac9f6a808447b04d506941" width="500" height="420" frameborder="0" scrolling="no"></iframe>   
+                            </div>
+                        </div>
+                        <div class="shee2">
+                            <div class="ss2">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_ef2a45d3219cd5688743ba29869b895e" width="500" height="420" frameborder="0" scrolling="no"></iframe>   
+                            </div>
+                            <div id="sswen3">
+                                <p class="fade-in">
+                                    艾媒调研数据显示，<span>近七成</span>消费者购买预制菜的目的是<span>节省时间，其次是美味可口和体验尝鲜</span>。在“宅经济”的趋势之下，预制菜本质是减少菜品加工程序，方便消费者更快捷地享用美食，同时相较于外出用餐和点外卖的花费都更低，更加推动了预制菜行业的快速发展。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                        
+                        <div class="shee3">
+                            <div class="ss3">
+                                <iframe src="https://dycharts.com/xshow/index.html?id=c_0b12ae6fe6c8cfc6f5100a5ebd7f192f" width="500" height="420" frameborder="0" scrolling="no"></iframe>   
+                            </div>
+                            <div id="swen3">
+                                <p>
+                                    预制菜操作方便快捷，适用都市快节奏生活；<span>越来越多的女性加入职场</span>，压缩了大量的做饭时间，导致以家庭为单位的消费群体不断扩大，而且中
+                                    国家庭逐渐趋于二人户甚至是一人户的模式，没时间做饭或不愿意做饭的个人和家庭越来越多.预制菜的适用人群范围不断拓宽；预制菜几乎涵盖了大部分中国菜系，适用于家庭大聚餐、朋友聚会、外出露营等多元场景，可以满足不同人群的多样口味，且伴随预制菜研发工艺日益精进，在食品安全和营养均衡搭配方面也在不断改进。
+                                </p>
+                            </div>
+                            <div class="sheeimg">
+                                <img class="sheecha" src="./img/蛋糕-01.png" width="250" width="250" alt="">
+                                <img class="sheecha" src="./img/酒坛.png" width="250" width="250" alt="">
+                            </div>
+        
+                        </div>
+                    <!-- </div> -->
+                </div>
+        </div>
+        <div class="yeitem" id="c">
+            <div class="da">
+                <div id="dabiao3">
+                    <img src="./img/动态大标题/动态大标题/3.gif" width="1200" height="300" alt="">
+                </div>
+                <!-- <img src="./img/插图4.png" width="250" width="250" alt=""> -->
+            </div>
+            <div id="huo">
+                <div id="ci">
+                    <img src="./img/必看三：营养.png" width="550" height="401" alt="">   
+                </div>
+                <p id="chi">
+                    预制菜还有营养吗?吃预制菜健康吗?这是很多消费者关心的话题。“预制菜经过热加工处理后，流失的营养素主要是蔬菜中的维生素和少量的矿物质，膳食纤维没有很大损失。肉类产品只要是新鲜的、品质好的，加热后蛋白质流失也并不多。"北京天坛医院临床营养科副主任医师许英霞说。
+                    事实上，不是所有预制菜都存在油盐含量过高的问题。如蔬菜沙拉、鸡肉汤、烤三明治等。这些预制菜中的配料通常是新鲜的蔬菜、水果、肉类和谷物等，而且经过合理的加工和搭配，可以提供人体所需的蛋白质、维生素、矿物质等营养素。
+                </p>
+            </div>
+            <div id="huo2">
+                <div id="ci">
+                    <iframe src="https://dycharts.com/xshow/index.html?id=c_73c56cb5ebb4f006f56e95ca8a0d60cc" width="500" height="420" frameborder="0" scrolling="no"></iframe>   
+                </div>
+                <p id="chi">
+                    与营养价值问题相比，更加值得注意的是预制菜油盐较多的问题。一些预制菜产品确实存在着脂肪含量高、钠含量高、能量密度高、维生素含量低等问题。调查发现，很多预制菜的钠含量基本都达到了500毫克/100克，按此计算，一份重量300克的预制菜的钠含量大约可以达到1500毫克。
+                    《中国居民膳食指南2022》建议，成年人每天摄入食盐<span>不超过5克</span>。一般食盐中钠含量约40%，也就是说，成年人每天摄入<span>钠不超过2000毫克</span>。按照这个标准计算，一份预制菜就可能占掉一个成年人一天钠摄入量的大多数份额。
+                </p>
+            </div>
+        </div>
+        <div class="yeitem" id="d">
+            <div id="dabiao4">
+                <img src="./img/动态大标题/动态大标题/4.gif" width="1000" alt="">
+            </div>
+            <div class="sibao">
+                <div id="sii">
+                    <div class="sann">
+                        <iframe src="https://dycharts.com/xshow/index.html?id=c_a70f13ea680bcad00efdf4cf130bfd5c" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="sann1">
+                        <iframe src="https://dycharts.com/xshow/index.html?id=c_0df9369b7cdabbbefd006455625e81a2" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+                <p id="cang">
+                    然而，预制菜在为我们的生活提供营养和便捷的同时，也存在着一些问题。部分预制菜可能存在<span>添加剂过多，生产环境不卫生，营养成分损耗</span>等问题。
+                    近年来，预制菜产业发展迅猛，大量预制菜企业涌入市场，为行业注入了活力。当然，新领域也会面临提升品质、规范发展等问题，部分预制菜企业出现经营异常和引起法律诉讼等问题，这体现出我国预制菜行业缺乏统一的标准和相关监管政策。除了企业要加强自律，加大创新，政府相关部门也要细化相关产品标准体系、操作规范流程，为消费者的健康安全，也为新赛道的加快发展把好“安全门”。
+                </p>
+            </div>
+            <div class="sibao2">
+                <!-- <div id="sii2">
+                    <div class="sann2">
+                        <iframe src="https://dycharts.com/xshow/index.html?id=c_a70f13ea680bcad00efdf4cf130bfd5c" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="sann12">
+                        <iframe src="https://dycharts.com/xshow/index.html?id=c_0df9369b7cdabbbefd006455625e81a2" width="400" height="340" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div> -->
+                <p id="cang2">
+                    冷冻预制菜在加工过程中，<span>维生素C</span>等营养成分易受温度影响而损失，尤其是冷冻过程会改变其分子结构并导致稳定性下降。
+                    此外，冷冻还可能导致细胞膜脆裂，进一步加剧<span>水溶性维生素如维生素B和C</span>的流失。在烹饪过程中，如蒸煮，也会因高温和时间控制不当而损失这些营养素，同时引起蛋白质变性，降低营养价值。然而，<span>真空包装技术</span>的应用能有效减少食材与氧气的接触，延缓氧化反应，
+                    从而在一定程度上保留预制菜中的维生素C、脂肪酸等营养成分，有助于保持食品的营养价值。综上所述，合理选择加工方式和包装技术对于保留预制菜的营养至关重要。
+                </p>
+            </div>
+        </div>
+        <div class="yeitem" id="e">
+            <div id="dabiao5">
+                <img src="./img/动态大标题/动态大标题/5.gif" width="1000" alt="">
+            </div>
+            <div id="xiaobiao5">
+                <img src="./img/横线小标题.jpg" width="400" alt="">
+                <img src="./img/小标题/小标题/政策.png" width="500" height="119" alt="">
+                <img src="./img/横线小标题.jpg" width="400"  alt="">
+            </div>
+            <div id="shao">
+                <img class="shaocha" src="./img/薯条1.png" width="250" width="250" alt="">
+                <div class="cetu">
+                    <iframe src="https://dycharts.com/xshow/index.html?id=c_c884a7a89bac5394f3681cd10ae3ce49" width="650" height="550" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <p id="wen">
+                    <sapn>民以食为天，食以安为先。</span>为了让百姓吃的更加放心，企业和政府都在不断做出努力。从企业角度来说，预制菜企业严格执行食品安全标准，逐步建立健全的质检体系，确保产品的安全、卫生、营养和口感。其次，随着科技的进步，预制菜生产技术也在不断创新。企业正不断研发新的加工技术和设备，提高预制菜的生产效率和质量。
+                    今年，市场监管总局等六部门21日联合发布<span>《关于加强预制菜食品安全监管 促进产业高质量发展的通知》</span>，首次明确预制菜定义和范围，强化预制菜食品安全监管，明确了推动预制菜食品安全标准和质量标准体系建设的方向。如今，小小的预制菜串联起田间地头和居民餐桌，既关联着经济增长，也关联着人民群众对美好生活的向往，我们相信，在未来，预制菜会成为主流，预制菜的向好发展正给大家带来着无限希望。　
+                </p>
+                <img class="shaocha2" src="./img/披萨.png" width="250" width="250" alt=""> 
+            </div>
+            <div id="shao2">
+                <img class="shaocha21" src="./img/可乐饮料.png" width="250" width="250" alt="">
+                <div class="cetu2">
+                    <iframe src="https://dycharts.com/xshow/index.html?id=c_98188098b601729d65af1a7cfe68244e" width="650" height="490" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <p id="wen2">
+                    近年来，随着预制菜产业的快速发展，预制菜相关标准的数量也在不断增加。根据红餐产业研究院的数据，截至2024年5月，我国现行预制菜相关的标准共计406项，其中地方标准27项、团体标准289项、企业标准90项。值得注意的是，这些数字相较于更早时间点的统计（如2022年的69项）有了显著增长。
+                        类型多样：预制菜标准涵盖了从原料规范、加工制作、分等分级、质量安全、仓储物流到设备、产业园建设等多个方面。这些标准共同构成了预制菜产业的标准体系，为产业的规范化发展提供了重要支撑。
+                    </p>
+                <img class="shaocha22" src="./img/煎饼02.png" width="250" width="250" alt=""> 
+            </div>
+            <div class="yeitem" id="f">
+                <div class="econtainer">
+                    <div id="eslide">
+                        <div class="eitem" style="background-image:url('./img/底部1.jpg')"></div>
+                        <div class="eitem" style="background-image:url('./img/底部2.jpg')"></div>
+                        <div class="eitem" style="background-image:url('./img/底部3.jpg')"></div>
+                        <div class="eitem" style="background-image:url('./img/底部4.jpg')"></div>
+                        <div class="eitem" style="background-image:url('./img/底部5.jpg')"></div>
+                        <div class="eitem" style="background-image:url('./img/底部6.jpeg')"></div>
+                    </div>
+                    <div class="ebuttons">
+                        <div class="eleft">Prev</div>
+                        <!-- <div class="ecenter">下载壁纸</div> -->
+                        <div class="eright">Next</div>
+                    </div>
+                  </div>
+            </div>
+            <div class="yeitem" id="g">
+                <div class="diancontainer">
+                    <p id="hui">你会喜欢预制菜吗</p>
+                    <div class="input-box">
+                        <label>
+                            <input type="radio" name="yes_no">
+                            <span class="yes"></span>
+                            会的
+                        </label>
+                        <label>
+                            <input type="radio" name="yes_no">
+                            <span class="no"></span>
+                            不会
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        //使用querySelectorAll方法获取页面上所有class为'item'的元素，并存储在items数组中  
+        const items = document.querySelectorAll('.item');  
+          
+        // 使用querySelectorAll方法获取页面上所有的<section>元素，并存储在sections数组中  
+        const sections = document.querySelectorAll('section');  
+          
+        // 定义一个函数removeActive，用于移除所有items和sections的'active'类  
+        function removeActive() {  
+            // 对items数组中的每个元素执行操作  
+            items.forEach(item => {  
+                // 从当前元素上移除'active'类  
+                item.classList.remove('active');  
+            });  
+            // 对sections数组中的每个元素执行操作  
+            sections.forEach(item => {  
+                // 从当前元素上移除'active'类  
+                item.classList.remove('active');  
+            });  
+        }  
+          
+        // 对items数组中的每个元素（item）及其索引（index）执行操作  
+        items.forEach((item, index) => {  
+            // 为当前item元素添加一个点击事件监听器  
+            item.addEventListener('click', function() {  
+                // 当item被点击时，首先移除所有items和sections的'active'类  
+                removeActive();  
+                // 然后给被点击的item元素添加'active'类  
+                item.classList.add('active');  
+                // 并给对应的sections数组中的元素（通过索引index）添加'active'类  
+                sections[index].classList.add('active');  
+            })  
+        })
+        // function goToHomePage() {  
+        //     // 使用 window.location.href 来设置要导航到的 URL  
+        //     window.location.href = "https://lyl2345.github.io/yuzhi5.github.io/"; // 假设首页的 URL 是根目录 "/"  
+        //     // 如果首页的 URL 不是根目录，你需要替换为实际的 URL，比如 "http://example.com" 或 "/index.html"  
+        // }
+        document.getElementById('switch').addEventListener('change', function() {  
+                    if (this.checked) {  
+                        // 如果复选框被选中，则设置一个3秒后的跳转  
+                        setTimeout(function() {  
+                            window.location.href = 'https://lyl2345.github.io/index.github.io/'; // 替换为你想要跳转的页面的URL  
+                        }, 1000); // 3000毫秒 = 3秒  
+                    }  
+                });
+const leftBtn = document.querySelector(".ebuttons .eleft")
+const rightBtn = document.querySelector(".ebuttons .eright")
+const slide = document.querySelector("#eslide")
+let openClick = true // 节流处理 (保证动画执行过程，按钮不被重复点击)
+
+leftBtn.addEventListener("click", () => {
+  if (openClick) {
+    openClick = false // 触发点击后，禁用按钮
+    const items = document.querySelectorAll(".eitem")
+    slide.prepend(items[items.length - 1])
+
+    setTimeout(() => openClick = true, 1000) // 1s 再开放按钮的点击
+  }
+})
+rightBtn.addEventListener("click", () => {
+  if (openClick) {
+    openClick = false
+    const items = document.querySelectorAll(".eitem")
+    slide.appendChild(items[0])
+
+    setTimeout(() => openClick = true, 1000)
+  }
+})
+    </script>
+</body>
+</html>

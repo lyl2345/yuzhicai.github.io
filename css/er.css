@@ -1,0 +1,718 @@
+@charset "utf-8";
+/*   
+ * 设置全局样式，将所有元素的外边距和内边距都设置为0，  
+ * 并设置盒模型为border-box，使得元素的宽度和高度  
+ * 包括内容、内边距和边框，但不包括外边距。  
+ */  
+ * {  
+    margin: 0;                   /* 清除所有元素的外边距 */  
+    padding: 0;                 /* 清除所有元素的内边距 */  
+    box-sizing: border-box;      /* 设置盒模型为border-box */  
+}  
+  
+/*   
+ * 设置body样式，使其占据整个视口的高度，  
+ * 并使用Flexbox居中显示内容。  
+ * 背景色设置为深灰色。  
+ */  
+/* body {  
+    justify-content: center;     
+    align-items: center;       
+    background: url(./img/美食7.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+     background-size: cover; 
+}   */
+.iconfont {
+   width: 80px;
+   height: 80px;
+   position: absolute;
+   /* left: 50%; */
+   z-index: 999;
+   font: 900 80px '';
+   color: #a18585;
+}
+
+#fanhui-btn {
+   top: 8%;
+   left: 5%;
+}
+  
+/*   
+ * 容器元素，使用Flexbox布局，允许内容换行。  
+ * 内容在容器中居中显示。  
+ */  
+#dabiao{
+   width: 1000px;
+   height: 300px;
+   margin: 0 auto 0 auto;
+}
+#xiaobiao{
+   display: flex;
+   width: 1000px;
+   height: 100px;
+   margin: 50px auto 50px auto;
+}
+.containeryi {  
+   margin-top: 50px;
+    display: flex;               /* 使用Flexbox布局 */  
+    flex-wrap: wrap;             /* 允许内容换行 */  
+    justify-content: center;     /* 水平居中 */  
+}  
+  
+/*   
+ * 卡片元素的基本样式，包括尺寸、背景色、文字颜色等。
+* 设置了溢出隐藏和光标为手形，表示可点击。  
+* 使用相对定位以便内部元素可以绝对定位。  
+*/  
+.cardyi {  
+   width: 450px;                /* 卡片宽度 */  
+   height: 500px;               /* 卡片高度 */  
+   overflow: hidden;            /* 溢出内容隐藏 */  
+   margin: 10px;                /* 外边距 */  
+   background-color: rgba(181, 157, 81, 0.8);      /* 背景色为黑色 */  
+   color: #2c2a2a;                 /* 文字颜色为白色 */  
+   cursor: pointer;             /* 光标为手形，表示可点击 */  
+   position: relative;          /* 相对定位 */  
+   border-radius: 25px;
+}  
+ 
+/*   
+* 卡片内的图片样式，设置图片的尺寸，并添加过渡效果。  
+*/  
+.cardyi img {  
+   width: 100%;                 /* 图片宽度为卡片宽度 */  
+   height: 100%;                /* 图片高度为卡片高度 */  
+   transition: 0.35s;           /* 过渡效果持续0.35秒 */  
+}  
+ 
+/*   
+* 卡片内的文本容器样式，绝对定位在卡片内部，  
+* 并设置了内边距。  
+*/  
+.cardyi .textyi {  
+   position: absolute;          /* 绝对定位 */  
+   top: 20px;                   /* 距离顶部30px */  
+   left: 30px;                  /* 距离左侧30px */  
+   bottom: 30px;                /* 距离底部30px */  
+   right: 30px;                 /* 距离右侧30px */  
+   padding: 0 10px;             /* 左右内边距为18px */  
+}  
+ 
+/*   
+* 文本容器前的伪元素样式，用于制作渐变效果。  
+* 初始状态为完全透明并位于卡片外部。  
+*/  
+.cardyi .textyi::before {  
+   content: "";                 /* 伪元素内容为空 */  
+   position: absolute;          /* 绝对定位 */  
+   top: 0;                      /* 顶部与文本容器对齐 */  
+   bottom: 0;                   /* 底部与文本容器对齐 */  
+   right: 0;                    /* 初始位置在右侧 */  
+   left: 100%;                  /* 初始位置完全在容器外部 */  
+   border-left: 4px solid rgba(255, 255, 255, 0.8); /* 左侧边框 */  
+   background-color: rgba(255, 255, 255, 0.5);     /* 背景色为半透明白色 */  
+   opacity: 0;                  /* 初始透明度为0，完全透明 */  
+   transition: 0.5s;            /* 过渡效果持续0.5秒 */  
+   transition-delay: 0.6s     /* 过渡效果开始前有0.6秒的延迟 */  
+}  
+ 
+/*   
+* 卡片文本内的标题和段落样式，初始状态透明度为0，  
+* 使用了transform进行位置调整，并设置了过渡效果。  
+*/  
+.cardyi .textyi h2,  
+.cardyi .textyi p {  
+   margin-bottom: 6px;          /* 底部外边距为6px */  
+   opacity: 0;                  /* 初始透明度为0 */  
+   transition: 0.35s;           /* 过渡效果持续0.35秒 */  
+}  
+ 
+/*   
+* 卡片文本内的标题样式，使用了transform进行位置调整，  
+* 字体较轻，文本全部大写，并设置了过渡效果的延迟。  
+*/  
+.cardyi .textyi h2 {  
+   font-weight: 300;            /* 字体粗细为300 */  
+   text-transform: uppercase;   /* 文本转换为大写 */  
+   transform: translate(30%, 0%);/* 初始位置向右偏移30% */  
+   transition-delay: 0.3s;      /* 过渡效果开始前有0.3秒的延迟 */  
+}  
+ 
+/*   
+* 标题内的重点文字样式，字体加粗。  
+*/  
+.cardyi .textyi h2 span {  
+   font-weight: 800;            /* 字体粗细为800 */  
+}  
+ 
+/*   
+* 卡片文本内的段落样式，字体较轻，并使用了transform进行位置调整。  
+*/  
+.cardyi .textyi p {  
+   font-weight: 200;            /* 字体粗细为200 */  
+   transform: translate(0%, 30%);/* 初始位置向下偏移30% */  
+}  
+ 
+/*   
+* 鼠标悬停在卡片上时，图片的透明度变为0.3。  
+*/  
+.cardyi:hover img {  
+   opacity: 0.3;  
+}  
+ 
+/*   
+* 鼠标悬停在卡片上时，标题的透明度变为1，位置回归原位，  
+* 并设置了过渡效果的延迟。  
+*/  
+.cardyi:hover .textyi h2 {  
+   opacity: 1;                  /* 透明度为1 */  
+   transform: translate(0%, 0%); /* 位置回归原位 */  
+   transition-delay: 0.4s;      /* 过渡效果开始前有0.4秒的延迟 */  
+}  
+ 
+/*   
+* 鼠标悬停在卡片上时，段落的透明度变为0.9，位置回归原位，  
+* 并设置了过渡效果的延迟。  
+*/  
+.cardyi:hover .textyi p {  
+   opacity: 0.9;                /* 透明度为0.9 */  
+   transform: translate(0%, 0%); /* 位置回归原位 */  
+   transition-delay: 0.6s;      /* 过渡效果开始前有0.6秒的延迟 */  
+}  
+ 
+/*   
+* 鼠标悬停在卡片上时，文本前的伪元素背景色变为透明，  
+* 位置从右侧移动到左侧，透明度变为1，并立即开始过渡效果。  
+*/  
+.cardyi:hover .textyi::before {  
+   background-color: rgba(255, 255, 255, 0); /* 背景色为透明 */  
+   left: 0;                      /* 位置在左侧 */  
+   opacity: 1;                  /* 透明度为1 */  
+   transition-delay: 0s;         /* 过渡效果没有延迟 */  
+}
+.shen{
+   width: 1400px;  
+   height: 1300px;  
+   background-color:  #fae9b2;
+   border-radius: 25px;
+   margin: 20px auto 0px auto; /* 水平居中整个.bao块 */  
+  /* border: 3px solid #333;  */
+}
+.shencha{
+   width: 1400px;
+   height: 250px;
+   display: flex; /* 使用Flexbox布局 */  
+   justify-content: space-between; /* 图片之间有空隙，并分布在容器的两端 */  
+   align-items: center; /* 垂直居中，如果需要的话 */  
+}
+.shentu{
+   height: 450px;
+   margin: 0 auto 0 auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 1000px;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 25px;
+ }
+.ming1{
+   margin: 50px auto 0 auto;
+   justify-content: center;
+   /* margin-top: 100px; */
+   /* font-family: 楷体; */
+   /* color: #6d6969; */
+  width: 1000px;
+  height: 300px;
+  border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+  border-image-slice: 1;
+  border-width: 5px;
+  border-style: solid;
+  border-image-outset: 0.5cm;
+  border-radius: 25px;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: 4px; 
+  color: #555;
+}
+#chucan{
+   width: 1400px;  
+   height: 800px;  
+   background-color:  #eddba0;
+   border-radius: 25px;
+   /* background-color: #f7f7ef;   */
+   display: flex;  
+   justify-content: center; 
+   align-items: center;
+   margin: 100px auto 0px auto; 
+  /* border: 3px solid #333;  */
+}
+.chu{
+   width: 1400px;  
+   height: 800px;
+   justify-content: center; 
+   align-items: center;
+}
+.chucanwen{
+   height: 250px;
+   margin-top: 60px;
+}
+#shangtu{
+   display: flex;
+}
+.shentu2{
+	width: 400px;
+   height: 400px;
+	display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-left: 100px;
+   margin-right: 50px;
+	margin-top: 30px;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 5%;
+ }
+ .shentu3{
+	width: 400px;
+    height: 400px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 150px; */
+	margin-top: 30px;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 5%;
+ }
+ .chucha{
+   margin-left: 50px;
+   margin-top: 70px;
+ }
+ .ming{
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3); */
+	margin:0 auto;
+	width: 800px;
+	height: 190px;
+   padding: 20px;
+   border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+   border-image-slice: 1;
+   border-width: 5px;
+   border-style: solid;
+   border-image-outset: 0.5cm;
+   border-radius: 25px;
+   font-size: 18px;
+   line-height: 30px;
+   letter-spacing: 4px; 
+   color: #555;
+}
+#lengwen1{
+   padding: 10px;
+   margin: 30px auto 10px auto;
+   width: 400px;
+   height: 15px;
+   color: #0f0f0f;
+   font-size: 18px;
+   line-height: 30px;
+   letter-spacing: 4px; 
+ }
+ #lengwen2{
+   margin: 0px auto 10px auto;
+   width: 390px;
+   height: 540px;
+   color: #0f0f0f;
+   font-size: 18px;
+   padding: 20px;
+   line-height: 25px;
+   letter-spacing: 4px; 
+ }
+ #lengwen3{
+   margin: 10px auto 10px auto;
+   width: 390px;
+   height: 540px;
+   color: #0f0f0f;
+   font-size: 18px;
+   padding: 20px;
+   line-height: 30px;
+   letter-spacing: 4px; 
+ }
+
+/* .erbao{
+   width: 1100px;  
+   height: 2300px;  
+
+   display: flex;  
+   align-items: center; 
+   margin: 80px auto; 
+
+} */
+ 
+
+
+
+.lengbao{
+   width: 1400px;  
+   height: 980px;  
+   background-color:  rgba(203, 182, 114);
+   border-radius: 25px;
+   /* background-color: #f7f7ef;   */
+   /* display: flex;   */
+   /* justify-content: center; */
+   /* align-items: center; */
+   margin: 30px auto 0px auto; /* 水平居中整个.bao块 */  
+  /* border: 3px solid #333;  */
+}
+#lengtu{
+   display: flex;
+   margin: 0 auto 0 auto; 
+   width: 1400px;  
+   height: 400px;
+}
+#leng2{
+   height: 1300px;
+}
+.letu1{
+	width: 500px;
+    /* height: 300px; */
+	display: flex;
+   justify-content: center;
+   align-items: center;
+	margin-top: 50px;
+   margin-left: 200px;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 5%;
+}
+.letu2{
+	width: 500px;
+    /* height: 300px; */
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	margin-top: 50px;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 5%;
+}
+#lengwen{
+	margin:50px auto;
+	width: 900px;
+	height: 380px;
+    /* font-family: 楷体; */
+    border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+    border-image-slice: 1;
+    border-width: 5px;
+    border-style: solid;
+    border-image-outset: 0.3cm;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 4px; 
+    color: #555;
+ }
+ #lengwen p{
+   padding: 20px;
+ }
+ .lengcha{
+   width: 500px;
+   height: 250px;
+   margin-left: 200px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center; 
+ }
+ .shebao{
+   width:1400px;  
+   height: 900px;  
+   background-color: #CBB672;  
+   display: flex;  
+   /* flex-direction: column; */
+   justify-content: center;
+   align-items: center; /* 水平居中单个项目（但在垂直布局中不太需要） */  
+   margin: 0 auto 0 auto; /* 水平居中整个.bao块 */  
+  border-radius: 25px;
+  /* border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+border-image-slice: 1;
+border-width: 5px;
+border-style: solid; */
+/* border-image-outset: 0.5cm; */
+/* background-color:  rgba(203, 182, 114, 0.5); */
+/* border-radius: 25px; */
+}
+
+
+
+.shee{
+   width: 900px;  
+   height: 750px;  
+   /* background-color: #f7f7ef;   */
+   /* display: flex;   */
+   /* justify-content: center; */
+   /* align-items: center; */
+   margin: 20px auto 0px auto; /* 水平居中整个.bao块 */  
+  /* border: 3px solid #333;  */
+}
+.shee2{
+   width: 900px;  
+   height: 750px;  
+   /* background-color: #f7f7ef;   */
+   /* display: flex;   */
+   /* justify-content: center; */
+   /* align-items: center; */
+   margin: 20px auto 0px auto; /* 水平居中整个.bao块 */  
+  /* border: 3px solid #333;  */
+}
+.shee3{
+   width: 1400px;  
+   height: 650px;  
+   /* background-color: #f7f7ef;   */
+   display: flex;  
+   /* justify-content: center; */
+   /* align-items: center; */
+   margin: 100px auto 0 auto; /* 水平居中整个.bao块 */  
+  /* border: 3px solid #333;  */
+  background-color:  rgba(203, 182, 114);
+  border-radius: 25px;
+}
+.sheecha{
+   width: 300px;
+   height: 300px;
+}
+.ss1{
+   width: 500px;
+   height: 450px;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 100px auto 0 auto;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 5%;
+}
+.sheeimg{
+   width: 300px;
+   height: 650px;
+}
+.ss2{
+   width: 500px;
+   height: 450px;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 20px auto;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 5%;
+}
+.ss3{
+   width: 500px;
+   height: 500px;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 80px 0 0 50px;
+   /* box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); */
+   border-radius: 5%;
+}
+#swen{
+   margin: 20px auto;
+   justify-content: center;
+   border-radius: 25px;
+   width: 500px;
+   height: 220px;
+   /* background-color:  rgba(203, 182, 114); */
+   font-size: 18px;
+   line-height: 30px;
+   letter-spacing: 4px; 
+   color: #555;
+   padding: 20px;
+   border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+   border-image-slice: 1;
+   border-width: 5px;
+   border-style: solid;
+}
+#sswen3{
+   margin: 20px auto;
+   justify-content: center;
+  width: 500px;
+  height: 230px;
+  /* background-color:  rgba(203, 182, 114); */
+  padding: 20px;
+  border-radius: 40px;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: 4px; 
+  color: #555;
+  border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+  border-image-slice: 1;
+  border-width: 5px;
+  border-style: solid;
+}
+#swen3{
+   text-align: center;
+	margin:50px auto;
+	width: 400px;
+	height: 550px;
+    /* font-family: 楷体; */
+    border-image-source: radial-gradient(60% 60%, transparent 0px, transparent 100%, rgb(80, 86, 86) 100%);
+    border-image-slice: 1;
+    border-width: 5px;
+    border-style: solid;
+    border-image-outset: 0.3cm;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 38px;
+    letter-spacing: 4px; 
+    color: #555;
+}
+/* .navbar {  
+   background-color: #a29e9e;  
+   color: #fff;  
+   display: flex;  
+   justify-content: space-around;  
+   align-items: center;  
+   padding: 10px 0;  
+}   */
+/*  
+.navbar-list {  
+   list-style-type: none;  
+   margin: 0;  
+   padding: 0;  
+   display: flex;  
+}  
+ 
+.navbar-item {  
+   position: relative;  
+}   */
+ 
+/* .navbar-item a {  
+   color: #fff;  
+   text-decoration: none;  
+   padding: 10px 20px;  
+   display: block;  
+}  
+  */
+/* .navbar-item.active a {  
+   background-color: #4CAF50;  
+}   */
+ 
+/* 添加一些悬停效果 */  
+/* .navbar-item a:hover {  
+   background-color: #555;  
+} */
+span{
+   font-weight: 800;
+   color: #000;
+}
+
+.love {  
+   position: absolute; /* 绝对定位 */  
+   top: 300px; /* 距离顶部的距离 */  
+   left: 100px; /* 距离左侧的距离 */  
+   /* 其他样式，如宽度、高度等可以根据需要添加 */    
+}    
+
+/* 已有的.round和.love-heart样式保持不变 */  
+
+
+.love-heart:before,
+#switch {
+   display: none;
+}
+
+.love-heart,
+.love-heart::after {
+   border-color: #d1d4e5;
+   border: 1px solid;
+   border-top-left-radius: 100px;
+   border-top-right-radius: 100px;
+   width: 10px;
+   height: 8px;
+   border-bottom: 0
+}
+
+.round {
+   position: absolute;
+   z-index: 1;
+   width: 8px;
+   height: 8px;
+   background: hsl(0deg 0% 100%);
+   box-shadow: rgb(0 0 0 / 24%) 0px 0px 4px 0px;
+   border-radius: 100%;
+   left: 0px;
+   bottom: -1px;
+   transition: all .5s ease;
+   animation: check-animation2 .5s forwards;
+}
+
+input:checked+label .round {
+   transform: translate(0px, 0px);
+   animation: check-animation .5s forwards;
+   background-color: hsl(0deg 0% 100%);
+}
+
+@keyframes check-animation {
+   0% {
+       transform: translate(0px, 0px);
+   }
+
+   50% {
+       transform: translate(0px, 7px);
+   }
+
+   100% {
+       transform: translate(7px, 7px);
+   }
+}
+
+@keyframes check-animation2 {
+   0% {
+       transform: translate(7px, 7px);
+   }
+
+   50% {
+       transform: translate(0px, 7px);
+   }
+
+   100% {
+       transform: translate(0px, 0px);
+   }
+}
+
+.love-heart {
+   box-sizing: border-box;
+   position: relative;
+   transform: rotate(-45deg) translate(-50%, -33px) scale(4);
+   display: block;
+   border-color: hsl(231deg 28% 86%);
+   cursor: pointer;
+   /* top: 0; */
+   margin: 0 auto 0 auto;
+}
+
+input:checked+.love-heart,
+input:checked+.love-heart::after,
+input:checked+.love-heart .bottom {
+   border-color: #e0c8a5;
+   box-shadow: inset 6px -5px 0px 2px #e0c8a5;
+}
+
+.love-heart::after,
+.love-heart .bottom {
+   content: "";
+   display: block;
+   box-sizing: border-box;
+   position: absolute;
+   border-color: hsl(231deg 28% 86%);
+}
+
+.love-heart::after {
+   right: -9px;
+   transform: rotate(90deg);
+   top: 7px;
+}
+
+.love-heart .bottom {
+   width: 11px;
+   height: 11px;
+   border-left: 1px solid;
+   border-bottom: 1px solid;
+   border-color: hsl(231deg 28% 86%);
+   left: -1px;
+   top: 5px;
+   border-radius: 0px 0px 0px 5px;
+}

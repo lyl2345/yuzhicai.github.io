@@ -1,0 +1,266 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {  
+    height: 100vh;               /* 视口高度 */  
+    justify-content: center;     /* 水平居中 */  
+    align-items: center;         /* 垂直居中 */  
+    background-color: #ddbd52;   /* 背景色为深灰色 */  
+}  
+.iconfont {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    /* left: 50%; */
+    z-index: 999;
+    font: 900 80px '';
+    color: #a18585;
+}
+
+#fanhui-btn {
+    top: 8%;
+    left: 5%;
+}
+.econtainer {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.eitem {
+    width: 240px;
+    height: 160px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    box-shadow: 0 30px 50px #505050;
+    background-size: cover;
+    background-position: center;
+    transition: 1s;
+}
+
+.eitem:nth-child(1),
+.eitem:nth-child(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0);
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.eitem:nth-child(3) {
+    left: 70%;
+}
+
+.eitem:nth-child(4) {
+    left: calc(70% + 250px);
+}
+
+.eitem:nth-child(5) {
+    left: calc(70% + 500px);
+}
+
+.eitem:nth-child(n+6) {
+    left: calc(70% + 750px);
+    opacity: 0;
+}
+
+.ebuttons {
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    margin-left: -50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.ebuttons div {
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 25px;
+    transition: .5s;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+/* 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(200deg, #e4efe9, #93a5cf);
+} */
+.navbar {  
+    background-color: #a29e9e;  
+    color: #fff;  
+    display: flex;  
+    justify-content: space-around;  
+    align-items: center;  
+    padding: 10px 0;  
+}  
+  
+.navbar-list {  
+    list-style-type: none;  
+    margin: 0;  
+    padding: 0;  
+    display: flex;  
+}  
+  
+.navbar-item {  
+    position: relative;  
+}  
+  
+.navbar-item a {  
+    color: #fff;  
+    text-decoration: none;  
+    padding: 10px 20px;  
+    display: block;  
+}  
+  
+/* .navbar-item.active a {  
+    background-color: #4CAF50;  
+}   */
+  
+/* 添加一些悬停效果 */  
+.navbar-item a:hover {  
+    background-color: #555;  
+}
+
+.love {  
+    position: absolute; /* 绝对定位 */  
+    top: 300px; /* 距离顶部的距离 */  
+    left: 100px; /* 距离左侧的距离 */  
+    /* 其他样式，如宽度、高度等可以根据需要添加 */    
+}    
+
+/* 已有的.round和.love-heart样式保持不变 */  
+
+
+.love-heart:before,
+#switch {
+    display: none;
+}
+
+.love-heart,
+.love-heart::after {
+    border-color: #d1d4e5;
+    border: 1px solid;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    width: 10px;
+    height: 8px;
+    border-bottom: 0
+}
+
+.round {
+    position: absolute;
+    z-index: 1;
+    width: 8px;
+    height: 8px;
+    background: hsl(0deg 0% 100%);
+    box-shadow: rgb(0 0 0 / 24%) 0px 0px 4px 0px;
+    border-radius: 100%;
+    left: 0px;
+    bottom: -1px;
+    transition: all .5s ease;
+    animation: check-animation2 .5s forwards;
+}
+
+input:checked+label .round {
+    transform: translate(0px, 0px);
+    animation: check-animation .5s forwards;
+    background-color: hsl(0deg 0% 100%);
+}
+
+@keyframes check-animation {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    50% {
+        transform: translate(0px, 7px);
+    }
+
+    100% {
+        transform: translate(7px, 7px);
+    }
+}
+
+@keyframes check-animation2 {
+    0% {
+        transform: translate(7px, 7px);
+    }
+
+    50% {
+        transform: translate(0px, 7px);
+    }
+
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+.love-heart {
+    box-sizing: border-box;
+    position: relative;
+    transform: rotate(-45deg) translate(-50%, -33px) scale(4);
+    display: block;
+    border-color: hsl(231deg 28% 86%);
+    cursor: pointer;
+    /* top: 0; */
+    margin: 0 auto 0 auto;
+}
+
+input:checked+.love-heart,
+input:checked+.love-heart::after,
+input:checked+.love-heart .bottom {
+    border-color: #e0c8a5;
+    box-shadow: inset 6px -5px 0px 2px #e0c8a5;
+}
+
+.love-heart::after,
+.love-heart .bottom {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-color: hsl(231deg 28% 86%);
+}
+
+.love-heart::after {
+    right: -9px;
+    transform: rotate(90deg);
+    top: 7px;
+}
+
+.love-heart .bottom {
+    width: 11px;
+    height: 11px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-color: hsl(231deg 28% 86%);
+    left: -1px;
+    top: 5px;
+    border-radius: 0px 0px 0px 5px;
+}
